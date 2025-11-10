@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Delivery</title>
+    <!-- Boxicons for UI icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #fff; color: #333; }
+        header {display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #f22a2a;}
+        .logo { font-size: 2rem; color: #fff; text-decoration: none; }
+        .navbar { list-style: none; display: flex; }
+        .navbar li { margin-left: 30px; }
+        .navbar a { color: #fff; text-decoration: none; font-size: 1.1rem; }
+        #menu-icon { display: none; font-size: 2rem; color: #fff; cursor: pointer; }
+        .home, .about, .menu, .services, .contact { padding: 60px 50px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;}
+        .home-text { max-width: 500px;}
+        .home-img img { width: 400px; border-radius: 20px; }
+        .about-img img { width: 300px; border-radius: 20px; }
+        .about-text { max-width: 500px;}
+        .heading { width: 100%; text-align: center; margin-bottom: 40px; }
+        .menu-container, .services-container {display: flex; gap: 20px; justify-content: center; width: 100%;}
+        .box, .s-box { background: #fde5e5; border-radius: 8px; padding: 20px; width: 300px; text-align: center; transition: transform 0.2s; box-shadow: 0 2px 12px #eee; }
+        .box:hover, .s-box:hover { transform: scale(1.03);}
+        .box-img img, .s-box img { width: 100%; border-radius: 8px; }
+        .btn { background: #f22a2a; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 20px; transition: background 0.2s; }
+        .btn:hover { background: #ff5722;}
+        .contact { flex-direction: row; flex-wrap: wrap; }
+        .contact-box { display: inline-block; vertical-align: top; width: 27%; padding: 20px; margin: 20px 1%; background: #fde5e5; border-radius: 8px;}
+        .address span { display: block; margin-bottom: 6px;}
+        .social a { margin: 0 8px; color: #f22a2a; font-size: 22px; }
+        footer { background: #f22a2a; color: #fff; text-align: center; padding: 15px 0; margin-top: 40px;}
+        @media (max-width: 900px) {
+            .menu-container, .services-container {flex-direction: column; align-items: center;}
+            .contact-box {width: 90%; margin-bottom: 20px;}
+            header {flex-direction: column; align-items: flex-start;}
+            .home, .about, .menu, .services, .contact {flex-direction: column;}
+            .home-img img, .about-img img { width: 80vw;}
+        }
+        @media (max-width:600px){
+            header, .home, .about, .menu, .services, .contact {padding: 20px;}
+            .navbar li {margin-left: 12px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <a href="#" class="logo">Pizza Corner</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <ul class="navbar" id="nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Pizza Taste</h1>
+            <h2>The delicious pizza of <br> your choice</h2>
+            <a href="#menu" class="btn">View Menu</a>
+        </div>
+        <div class="home-img">
+    <img src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg" alt="Pizza">
+</div>
+
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="https://images.pexels.com/photos/1402878/pexels-photo-1402878.jpeg" alt="About Pizza">
+        </div>
+        <div class="about-text">
+            <span>About Us</span>
+            <h2>We serve delicious and quality pizzas</h2>
+            <p>Discover our secret recipes and tasty ingredients, crafted for pizza lovers everywhere!</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="heading">
+            <span>Menu</span>
+            <h2>Current Week Menu</h2>
+        </div>
+        <div class="menu-container">
+            <div class="box">
+                <div class="box-img"><img src="https://images.pexels.com/photos/4012966/pexels-photo-4012966.jpeg" alt=""></div>
+                <h2>Margherita Pizza</h2>
+                <h3>Classic taste in every bite</h3>
+                <span>$15.25</span>
+                <button class="btn" onclick="addToCart('Margherita Pizza')">Order</button>
+            </div>
+            <div class="box">
+                <div class="box-img"><img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" alt=""></div>
+                <h2>Pepperoni Pizza</h2>
+                <h3>Spicy perfection</h3>
+                <span>$19.05</span>
+                <button class="btn" onclick="addToCart('Pepperoni Pizza')">Order</button>
+            </div>
+            <div class="box">
+                <div class="box-img"><img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg" alt=""></div>
+                <h2>Veggie Pizza</h2>
+                <h3>Fresh and healthy</h3>
+                <span>$18.05</span>
+                <button class="btn" onclick="addToCart('Veggie Pizza')">Order</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="heading">
+            <span>Our Services</span>
+            <h2>Best quality food services</h2>
+        </div>
+        <div class="services-container">
+            <div class="s-box">
+                <img src="https://images.pexels.com/photos/280453/pexels-photo-280453.jpeg" alt="">
+                <h3>Your Orders</h3>
+                <p>Simple and quick ordering process for your pizza cravings.</p>
+            </div>
+            <div class="s-box">
+                <img src="https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg" alt="">
+                <h3>Shipping Status</h3>
+                <p>Track your pizza from oven to doorstep!</p>
+            </div>
+            <div class="s-box">
+                <img src="https://images.pexels.com/photos/4393426/pexels-photo-4393426.jpeg" alt="">
+                <h3>Delivered</h3>
+                <p>Fast and safe pizza delivery at your location.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-box">
+            <h3>Pizza Corner</h3>
+            <span>Connect With Us</span>
+            <div class="social">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+            </div>
+        </div>
+        <div class="contact-box">
+            <h3>Menu Links</h3>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </div>
+        <div class="contact-box address">
+            <h3>Contact</h3>
+            <span>+91 000 XXX 5555</span>
+            <span>example@email.com</span>
+        </div>
+    </section>
+
+    <footer>
+        <p>© Pizza Shop All Right Reserved.</p>
+    </footer>
+    <!-- Simple interactive JS for navbar and cart feedback -->
+    <script>
+        // Responsive navbar toggle
+        document.getElementById('menu-icon').onclick = function() {
+            const nav = document.getElementById('nav');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        };
+        // Simple cart interaction
+        function addToCart(item){
+            alert(item + ' added to your order!');
+        }
+    </script>
+</body>
+</html>
